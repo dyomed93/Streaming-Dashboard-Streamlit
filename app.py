@@ -52,9 +52,10 @@ if __name__ == "__main__":
     page_module = importlib.import_module(pages[selection])
 
     dynamic_filters = DynamicFilters(global_df, filters=['Movie or Serie', 'Country', 'Director', 'Release Year'])
+    st.button("Reset Filters", on_click=dynamic_filters.reset_filters)
     dynamic_filters.display_filters(location="sidebar")
     global_df = dynamic_filters.filter_df()
-
+    
 
     # Function show() in the selected page
     if hasattr(page_module, "show"):
