@@ -13,4 +13,5 @@ font = "sans serif"
 gatherUsageStats = false  
 
 [client]
-showSidebarNavigation = false  
+showSidebarNavigation = false
+toolbarMode = "viewer"  
