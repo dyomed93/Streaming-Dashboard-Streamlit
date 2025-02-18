@@ -11,7 +11,6 @@ st.set_page_config(
     page_title="Streaming Data Analysis",
     page_icon="🎬",
     layout="wide",
-    # initial_sidebar_state="expanded"
     )
 
 global_df = load_data("all_streaming.csv")
@@ -22,7 +21,6 @@ global_df = global_df.rename(columns={"movie_or_serie": "Movie or Serie"
                                       , "director": "Director"
                                       , "release_year": "Release Year"})
 global_df["Release Year"] = global_df["Release Year"].astype(str)
-# global_df["Platform Add Year"] = global_df["Platform Add Year"].apply(lambda x: x.split(".")[0])
 
 
 pages = {
@@ -49,7 +47,6 @@ if __name__ == "__main__":
         st.rerun()
 
     global_df = filter_dataset(global_df, selection)
-    # print(global_df["channel_streaming"].unique())
 
     # Module selection for the selected page
     page_module = importlib.import_module(pages[selection])
@@ -57,9 +54,6 @@ if __name__ == "__main__":
     dynamic_filters = DynamicFilters(global_df, filters=['Movie or Serie', 'Country', 'Director', 'Release Year'])
     dynamic_filters.display_filters(location="sidebar")
     global_df = dynamic_filters.filter_df()
-
-    # global_df = clean_cast(global_df)
-    # global_df = clean_country(global_df)
 
 
     # Function show() in the selected page
@@ -80,6 +74,7 @@ if __name__ == "__main__":
     else:
         st.error(f"Error: in page {selection} function `graphs_hp()` not created!")
     
+    # Function create_table() in the selected page
     if hasattr(page_module, "create_table"):
         page_module.create_table(global_df)
     else:

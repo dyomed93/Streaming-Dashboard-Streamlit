@@ -3,7 +3,6 @@ import plotly.express as px
 from utils import load_data, count_actors, count_countries, clean_cast, clean_country
 
 
-
 def show():
     st.title("Streaming Data Analysis")
 
