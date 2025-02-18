@@ -1,0 +1,16 @@
+[server]
+enableXsrfProtection = false
+enableCORS = false
+
+[theme]
+primaryColor = "#BB86FC"  # Viola chiaro per pulsanti e elementi interattivi
+backgroundColor = "#121212"  # Nero/grigio scuro per lo sfondo principale
+secondaryBackgroundColor = "#1E1E1E"  # Grigio più chiaro per sidebar e sezioni secondarie
+textColor = "#FFFFFF"  # Testo bianco per contrasto
+font = "sans serif"  # Font leggibile
+
+[browser]
+gatherUsageStats = false  # Opzionale: disabilita il tracciamento di utilizzo di Streamlit
+
+[client]
+showSidebarNavigation = false  # Rimuove il menu hamburger
