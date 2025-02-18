@@ -44,13 +44,13 @@ def graphs_hp(global_df):
         if global_df["Country"].nunique() > 1:
             global_df = clean_country(global_df)
             country, country_cnt = count_countries(global_df)
-            fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Movies & Series by Country", labels={'x': 'Country', 'y': 'N. Productions'},
+            fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Country by n. Productions", labels={'x': 'Country', 'y': 'N. Productions'},
                     template="seaborn", color=country_cnt, color_continuous_scale='Blues')
             fig2.update_traces(width=0.5)
             st.plotly_chart(fig2, use_container_width=True)
         else:
             country, country_cnt = count_countries(global_df)
-            fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Movies & Series by Country", labels={'x': 'Country', 'y': 'N. Productions'},
+            fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Country by n. Productions", labels={'x': 'Country', 'y': 'N. Productions'},
                     template="seaborn", color=country_cnt, color_continuous_scale='Blues')
             st.plotly_chart(fig2, use_container_width=True)
 
