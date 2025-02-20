@@ -29,16 +29,22 @@ def graphs_hp(global_df):
             fig2 = px.bar(df_by_year, x="Platform Add Year", y="count", title="Movies & Series Added by Date", template="seaborn")
             st.plotly_chart(fig2, use_container_width=True)
     with col2:
-        global_df = clean_cast(global_df)
-        global_df = clean_country(global_df)
-        actors, counts = count_actors(global_df)
-        fig = px.bar(x=actors, y=counts, title="Top 5 Actors by Appearances", labels={'x': 'Actors', 'y': 'Appearances'}, template="seaborn",
-              color=counts, color_continuous_scale='Blues')
-        st.plotly_chart(fig, use_container_width=True)
-        country, country_cnt = count_countries(global_df)
-        fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Country by n. Productions", labels={'x': 'Country', 'y': 'N. Productions'},
-                    template="seaborn", color=country_cnt, color_continuous_scale='Blues')
-        st.plotly_chart(fig2, use_container_width=True)
+        try:
+            global_df = clean_cast(global_df)
+            actors, counts = count_actors(global_df)
+            fig = px.bar(x=actors, y=counts, title="Top 5 Actors by Appearances", labels={'x': 'Actors', 'y': 'Appearances'}, template="seaborn",
+                color=counts, color_continuous_scale='Blues')
+            st.plotly_chart(fig, use_container_width=True)
+        except:
+            st.write("No data available for the selected filters")
+        try:
+            global_df = clean_country(global_df)
+            country, country_cnt = count_countries(global_df)
+            fig2 = px.bar(x=country, y=country_cnt, title="Top 5 Country by n. Productions", labels={'x': 'Country', 'y': 'N. Productions'},
+                        template="seaborn", color=country_cnt, color_continuous_scale='Blues')
+            st.plotly_chart(fig2, use_container_width=True)
+        except:
+            st.write("No data available for the selected filters")
 
 def create_table(global_df):
     st.write("**Disney Data**")
